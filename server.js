@@ -9,5 +9,11 @@ app.use(express.static(__dirname + "/public"));
 app.get("/", function(req, res){
    res.render("index");
 });
+app.get("/people", function(req, res){
+   res.render("people");
+});
+app.get("/things", function(req, res){
+   res.render("things");
+});
 
 app.listen(process.env.PORT);
