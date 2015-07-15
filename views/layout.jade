@@ -5,12 +5,10 @@ html
         link(href="/vendor/bootstrap/dist/css/bootstrap.min.css", rel="stylesheet")
     body
         ul.nav.nav-tabs
-            li.active
-                a(href="/") Home
-            li
-                a(href="/people") People
-            li
-                a(href="/things") Things
+            each tab in tabs
+                li(class={"active": activePath == tab.path})
+                    a(href=tab.path) 
+                        =tab.title
         .container
             .well
                 h1 
