@@ -2,6 +2,7 @@ var express = require("express");
 var Tab = require("./app/tab");
 var db = require("./app/config/db");
 var Thing = require("./app/models/thing");
+var bodyParser = require("body-parser");
 
 db.connect()
     .then(function(){
@@ -17,6 +18,8 @@ app.locals.pretty = true;
 app.set("view engine", "jade");
 
 app.use(express.static(__dirname + "/public"));
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(function(req, res, next){
     res.locals.tabs = [
@@ -47,6 +50,15 @@ app.get("/things", function(req, res){
            activePath: "/things",
            things: things
        });
+    });
+});
+
+app.post("/things/:id", function(req, res){
+    Thing.update(
+        {_id: req.params.id}, 
+        {$set:{ name: req.body.name}}
+    ).then(function(){
+        res.redirect("/things"); 
     });
 });
 
