@@ -1,5 +1,14 @@
 var express = require("express");
 var Tab = require("./app/tab");
+var db = require("./app/config/db");
+
+db.connect()
+    .then(function(){
+        console.log("connected");
+    })
+    .catch(function(err){
+        console.log(err);
+    });
 
 
 var app = express();
