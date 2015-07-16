@@ -53,6 +53,14 @@ app.get("/things", function(req, res){
     });
 });
 
+app.post("/things/new", function(req, res){
+   var thing = new Thing(req.body); 
+   thing.save()
+    .then(function(){
+       res.redirect("/things"); 
+    });
+});
+
 app.post("/things/:id", function(req, res){
     Thing.update(
         {_id: req.params.id}, 
@@ -62,6 +70,13 @@ app.post("/things/:id", function(req, res){
     });
 });
 
+app.get("/things/new", function(req, res){
+    res.render("thing_new", {
+        activePath: "/things",
+        title: "Insert a New Thing"
+    });
+    
+});
 app.get("/things/:id", function(req, res){
     Thing.findById(req.params.id)
         .then(function(thing){
