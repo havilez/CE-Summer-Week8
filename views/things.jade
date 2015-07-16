@@ -1,1 +1,10 @@
 extends layout
+block content
+    ul
+        each thing in things
+            li 
+                =thing.name
+                
+    if things.length == 0
+        .alert.alert-danger
+            | There are no things!

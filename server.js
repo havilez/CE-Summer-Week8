@@ -1,6 +1,7 @@
 var express = require("express");
 var Tab = require("./app/tab");
 var db = require("./app/config/db");
+var Thing = require("./app/models/thing");
 
 db.connect()
     .then(function(){
@@ -40,10 +41,13 @@ app.get("/people", function(req, res){
    });
 });
 app.get("/things", function(req, res){
-   res.render("things", {
-       title: "Things",
-       activePath: "/things"
-   });
+    Thing.find({}).then(function(things){
+       res.render("things", {
+           title: "Things",
+           activePath: "/things",
+           things: things
+       });
+    });
 });
 
 app.listen(process.env.PORT);
