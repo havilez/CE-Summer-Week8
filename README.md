@@ -1,8 +1,8 @@
-* Assignment
+# Express Assignment
 
-- enforce name is required
-- enforce name is unique
-- handle errors on insert
-- handle errors on update
-- add ability to delete on edit page
-- add active property on thing can be set with checkbox
+- Make the "name" property of Thing required
+- Make the "name" propert of Thing unique
+- Handle errors if the inserted "Thing" throws an error
+- Handle errors if the updated "Thing" throws an error
+- Add delete button on the "Things" edit page
+- Add active propery to "Thing" which can be set with a checkbox on insert and edit page
