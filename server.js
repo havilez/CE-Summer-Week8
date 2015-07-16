@@ -50,4 +50,15 @@ app.get("/things", function(req, res){
     });
 });
 
+app.get("/things/:id", function(req, res){
+    Thing.findById(req.params.id)
+        .then(function(thing){
+            res.render("thing", {
+               activePath: "/things",
+               thing: thing,
+               title: "Thing " + thing.name
+            });  
+        });
+});
+
 app.listen(process.env.PORT);
