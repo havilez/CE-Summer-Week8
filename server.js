@@ -1,5 +1,14 @@
 var express = require("express");
 
+function Tab(title, path){
+   this.title = title; 
+   this.path = path;
+}
+
+Tab.prototype.isActive = function(activePath){
+   return activePath == this.path; 
+};
+
 var app = express();
 app.locals.pretty = true;
 app.set("view engine", "jade");
@@ -8,18 +17,9 @@ app.use(express.static(__dirname + "/public"));
 
 app.use(function(req, res, next){
     res.locals.tabs = [
-        {
-            title: "Home",
-            path: "/"
-        },
-        {
-           title: "People",
-           path: "/people"
-        },
-        {
-            title: "Things",
-            path: "/things"
-        }
+            new Tab("Home", "/"),
+            new Tab("People", "/people"),
+            new Tab("Things", "/things")
     ];
     next(); 
 });

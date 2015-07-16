@@ -6,7 +6,7 @@ html
     body
         ul.nav.nav-tabs
             each tab in tabs
-                li(class={"active": activePath == tab.path})
+                li(class={"active": tab.isActive(activePath)})
                     a(href=tab.path) 
                         =tab.title
         .container
