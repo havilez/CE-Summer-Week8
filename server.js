@@ -1,13 +1,6 @@
 var express = require("express");
+var Tab = require("./app/tab");
 
-function Tab(title, path){
-   this.title = title; 
-   this.path = path;
-}
-
-Tab.prototype.isActive = function(activePath){
-   return activePath == this.path; 
-};
 
 var app = express();
 app.locals.pretty = true;
