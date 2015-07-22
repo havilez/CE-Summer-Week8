@@ -7,8 +7,13 @@ block content
         div.form-group
             label(for="thing_name") Name
             input.form-control#thing_name(name="name" value=thing.name)
+
+            label(for="thing_active") Active
+            input.form-control#thing_active(type='checkbox', name='active',   checked=thing.active)
+
         div
-            button.btn.btn-primary(type="submit")
+            button.btn.btn-primary(type="submit", name="Save", value="Save")
                 | Save
-        
+            button.btn.btn-primary(type="submit", name="Delete", value="Delete")
+                | Delete
                 
